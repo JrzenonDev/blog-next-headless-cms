@@ -39,8 +39,9 @@
       color: var(--white);
     }
 
-    &:active {
+    &.active {
       color: var(--yellow-500);
+      font-weight: bold;
     }
   }
 }
