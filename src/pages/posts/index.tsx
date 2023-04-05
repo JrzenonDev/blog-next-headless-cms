@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
 import thumbImg from '../../../public/images/thumb.png'
 import styles from './style.module.scss'
 
@@ -25,6 +26,26 @@ export default function Posts() {
             <time>14 de Abril de 2023</time>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, provident aliquam eos impedit fugit facilis odit aut. Exercitationem eveniet maxime sit accusantium nam molestias facere labore molestiae ratione! Impedit, sequi.</p>
           </Link>
+
+          <div className={styles.buttonsNavigate}>
+            <div>
+              <button>
+                <FiChevronsLeft size={25} color='#fff' />
+              </button>
+              <button>
+                <FiChevronLeft size={25} color='#fff' />
+              </button>
+            </div>
+            <div>
+              <button>
+                <FiChevronsRight size={25} color='#fff' />
+              </button>
+              <button>
+                <FiChevronRight size={25} color='#fff' />
+              </button>
+            </div>
+          </div>
+
         </div>
       </main>
     </>
