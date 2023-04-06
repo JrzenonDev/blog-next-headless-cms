@@ -33,11 +33,11 @@ export default function Home({ content }: ContentProps) {
       <main className={styles.container}>
         <div className={styles.containerHeader}>
           <section className={styles.ctaText}>
-            <h1>Levando você ao próximo nível</h1>
+            <h1>{content.title}</h1>
             <span>
-            Uma plataforma com cursos que vão do zero até o profissional na pratica, direto ao ponto aplicando o que usamos no mercado de trabalho. 👊
+              {content.sub_title}
             </span>
-            <a>
+            <a href={content.button_action}>
               <button>
                 COMEÇAR AGORA!
               </button>
@@ -50,19 +50,19 @@ export default function Home({ content }: ContentProps) {
 
         <div className={styles.sectionContent}>
           <section>
-            <h2>Aprenda a criar aplicativos para Android e IOS</h2>
-            <span>Você vai descobrir o jeito mais moderno de desenvolver apps nativos para iOS e Android, construindo aplicativos do zero até aplicativos.</span>
+            <h2>{content.mobile}</h2>
+            <span>{content.mobile_content}</span>
           </section>
-          <img src='/images/financasApp.png' alt='Conteúdos desenvolvimento de apps' />
+          <img src={content.mobile_banner} />
         </div>
 
         <hr className={styles.divisor}/>
 
         <div className={styles.sectionContent}>
-          <img src='/images/webDev.png' alt='Conteúdos desenvolvimento de aplicacoes web' />
+          <img src={content.web_banner} />
           <section>
-          <h2>Aprenda criar sistemas web</h2>
-          <span>Criar sistemas web, sites usando as tecnologias mais modernas e requisitadas pelo mercado.</span>
+          <h2>{content.title_web}</h2>
+          <span>{content.web_content}</span>
           </section>
         </div>
 
