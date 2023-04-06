@@ -4,25 +4,27 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { RichText } from 'prismic-dom'
+import { useState } from 'react'
 import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
-import thumbImg from '../../../public/images/thumb.png'
 import { getPrismicClient } from '../../services/prismic'
 import styles from './style.module.scss'
 
 type Post = {
-  slug: string,
-  title: string,
-  cover: string,
-  updatedAt: string
+  slug: string;
+  title: string;
+  description: string;
+  cover: string;
+  updatedAt: string;
 }
 
 interface PostsProps {
   posts: Post[];
 }
 
-export default function Posts({ posts }: PostsProps) {
+export default function Posts({ posts: postsBlog }: PostsProps) {
 
-  console.log(posts)
+  const [posts, setPosts] = useState(postsBlog || []);
+
   return (
     <>
       <Head>
@@ -31,18 +33,25 @@ export default function Posts({ posts }: PostsProps) {
 
       <main className={styles.container}>
         <div className={styles.posts}>
-          <Link href='/'>
-            <Image
-              src={thumbImg}
-              alt='Post 1'
-              width={720}
-              height={410}
-              quality={100}
-            />
-            <strong>Criando meu primeiro aplicativo</strong>
-            <time>14 de Abril de 2023</time>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, provident aliquam eos impedit fugit facilis odit aut. Exercitationem eveniet maxime sit accusantium nam molestias facere labore molestiae ratione! Impedit, sequi.</p>
-          </Link>
+
+          {posts.map(post => (
+              <Link href={`/posts/${post.slug}`} key={post.slug}>
+                <Image
+                  src={post.cover}
+                  alt={post.title}
+                  width={720}
+                  height={410}
+                  quality={100}
+                  placeholder='blur'
+                  blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM0sbD/DwAC/wGshMY2nQAAAABJRU5ErkJggg=='
+                />
+                <strong>{post.title}</strong>
+                <time>{post.updatedAt}</time>
+                <p>{post.description}</p>
+              </Link>
+          ))}
+
+
 
           <div className={styles.buttonsNavigate}>
             <div>
